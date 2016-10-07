@@ -33,6 +33,8 @@ function nuevaLista(e) {
 		return false;
 	}
 	
+	textoLista.focus();
+	
 	spanLista.textContent = textoLista.value;
 	spanLista.classList.add("spanLista");
 
@@ -57,6 +59,7 @@ function nuevaLista(e) {
 	nuevaTarjeta.addEventListener("click", añadirTarjeta);
 	contenedorLista.addEventListener("drop", soltar);
 	contenedorLista.addEventListener("dragover", arrastarSobre);
+	contenedorLista.addEventListener("dragend", dragend);
 }
 
 function eliminar(e) {
@@ -108,21 +111,30 @@ function nuevaTarjeta(e) {
 
 function empiezaArrastrar(e) {
 	e.dataTransfer.setData("text", this.id);
+	this.classList.add("animated","swing");
 
 }
 
 function soltar(e) {
 	var elementoArrastrado = document.getElementById(e.dataTransfer.getData("text"));
 	this.insertBefore(elementoArrastrado, this.children[1]);
+	this.classList.remove("color");
+	this.classList.remove("animated","shake");
+	
+
 }
 
 function entraArrastrar(e) {
+	e.preventDefault();
 	this.parentElement.classList.add("color");
-	this.nextSibling.classList.add("colorEnlace");
 }
 function dejaArrastrar(e){
+	e.preventDefault();
 	this.parentElement.classList.remove("color");
 }
 function arrastarSobre(e) {
 	e.preventDefault();
+}
+function dragend(e){
+	this.classList.add("animated","shake");
 }
