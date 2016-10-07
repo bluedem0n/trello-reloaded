@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+   .buscar{
+      display: none;
+   }
+   .barra{
+      display: none;
+   }
+   #contenedor{
+      margin-top: 5.5em;
+   }
+   .lista{
+      display: block;
+      margin-bottom: 2em;
+   }
+   #contenedorLista{
+     width: 78%;
+   }
+}
+
+
+/* Landscape phone to portrait tablet */
+
+@media (min-width: 481px) and (max-width: 767px) {
+   .buscar{
+      display: none;
+   }
+   .barra{
+      display: none;
+   }
+   #contenedor{
+      margin-top: 5.5em;
+   }
+   .lista{
+      margin-bottom: 2em;
+      display: block;
+   }
+    #contenedorLista{
+      width: 78%;
+   }
+}
