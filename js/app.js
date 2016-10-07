@@ -12,6 +12,7 @@ function cargar() {
 	boton.addEventListener("click", verSpan);
 	boton.addEventListener("click", nuevaLista);
 }
+
 function verSpan(e) {
 	e.preventDefault();
 	contenedorLista.classList.add("none");
@@ -28,13 +29,13 @@ function nuevaLista(e) {
 	e.preventDefault();
 	var contenedorLista = document.createElement("div");
 	var spanLista = document.createElement("span");
-	
-	if(textoLista.value === ""){
+
+	if (textoLista.value === "") {
 		return false;
 	}
-	
+
 	textoLista.focus();
-	
+
 	spanLista.textContent = textoLista.value;
 	spanLista.classList.add("spanLista");
 
@@ -85,7 +86,7 @@ function añadirTarjeta(e) {
 	form.appendChild(textArea);
 	form.appendChild(nuevoBoton);
 	form.appendChild(iconoEliminar);
-	
+
 	this.parentElement.insertBefore(form, this.nextSibling);
 	nuevoBoton.addEventListener("click", nuevaTarjeta);
 }
@@ -103,15 +104,15 @@ function nuevaTarjeta(e) {
 	// Arrastrando TextArea de la Tarjeta
 	txtTarjeta.draggable = "true";
 	txtTarjeta.id = "id" + contador;
-	contador ++;
+	contador++;
 	txtTarjeta.addEventListener("dragstart", empiezaArrastrar);
-	txtTarjeta.addEventListener("dragenter",entraArrastrar);
-	txtTarjeta.addEventListener("dragleave",dejaArrastrar);
+	txtTarjeta.addEventListener("dragenter", entraArrastrar);
+	txtTarjeta.addEventListener("dragleave", dejaArrastrar);
 }
 
 function empiezaArrastrar(e) {
 	e.dataTransfer.setData("text", this.id);
-	this.classList.add("animated","swing");
+	this.classList.add("animated", "swing");
 
 }
 
@@ -119,8 +120,8 @@ function soltar(e) {
 	var elementoArrastrado = document.getElementById(e.dataTransfer.getData("text"));
 	this.insertBefore(elementoArrastrado, this.children[1]);
 	this.classList.remove("color");
-	this.classList.remove("animated","shake");
-	
+	this.classList.remove("animated", "shake");
+
 
 }
 
@@ -128,13 +129,16 @@ function entraArrastrar(e) {
 	e.preventDefault();
 	this.parentElement.classList.add("color");
 }
-function dejaArrastrar(e){
+
+function dejaArrastrar(e) {
 	e.preventDefault();
 	this.parentElement.classList.remove("color");
 }
+
 function arrastarSobre(e) {
 	e.preventDefault();
 }
-function dragend(e){
-	this.classList.add("animated","shake");
+
+function dragend(e) {
+	this.classList.add("animated", "shake");
 }
