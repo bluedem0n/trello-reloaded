@@ -24,16 +24,15 @@ function añadirLista(e) {
 	contenedorLista.classList.add("inline");
 }
 
-
 function nuevaLista(e) {
 	e.preventDefault();
 	var contenedorLista = document.createElement("div");
 	var spanLista = document.createElement("span");
-
+	
 	if(textoLista.value === ""){
 		return false;
 	}
-
+	
 	spanLista.textContent = textoLista.value;
 	spanLista.classList.add("spanLista");
 
@@ -56,7 +55,8 @@ function nuevaLista(e) {
 	nuevaTarjeta.classList.add("enlaceTarjeta");
 
 	nuevaTarjeta.addEventListener("click", añadirTarjeta);
-
+	contenedorLista.addEventListener("drop", soltar);
+	contenedorLista.addEventListener("dragover", dragover);
 }
 
 function eliminar(e) {
@@ -82,7 +82,7 @@ function añadirTarjeta(e) {
 	form.appendChild(textArea);
 	form.appendChild(nuevoBoton);
 	form.appendChild(iconoEliminar);
-
+	
 	this.parentElement.insertBefore(form, this.nextSibling);
 	nuevoBoton.addEventListener("click", nuevaTarjeta);
 }
@@ -97,5 +97,23 @@ function nuevaTarjeta(e) {
 	txtTarjeta.textContent = this.previousSibling.value;
 	this.parentElement.parentElement.insertBefore(txtTarjeta, this.parentElement.previousSibling);
 
+	// Arrastrando TextArea de la Tarjeta
+	txtTarjeta.draggable = "true";
+	txtTarjeta.id = "id" + contador;
+	contador ++;
+	txtTarjeta.addEventListener("dragstart", empiezaArrastrar);
 }
 
+function empiezaArrastrar(e) {
+	e.dataTransfer.setData("text", this.id);
+
+}
+
+function soltar(e) {
+	var elementoArrastrado = document.getElementById(e.dataTransfer.getData("text"));
+	this.insertBefore(elementoArrastrado, this.children[1]);
+}
+
+function dragover(e) {
+	e.preventDefault();
+}
