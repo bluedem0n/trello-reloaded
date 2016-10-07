@@ -41,9 +41,7 @@ function nuevaLista(e) {
 	spanLista.contentEditable = true;
 
 	contenedorLista.appendChild(spanLista);
-
 	contenedor.insertBefore(contenedorLista, span.previousSibling);
-
 	textoLista.value = "";
 
 	var nuevaTarjeta = document.createElement("a");
@@ -57,4 +55,47 @@ function nuevaLista(e) {
 
 	nuevaTarjeta.classList.add("enlaceTarjeta");
 
+	nuevaTarjeta.addEventListener("click", añadirTarjeta);
+
 }
+
+function eliminar(e) {
+	e.preventDefault();
+	var formulario = this.parentElement;
+	formulario.parentElement.removeChild(formulario);
+}
+
+function añadirTarjeta(e) {
+	e.preventDefault();
+	this.style.display = "none";
+	var form = document.createElement("form");
+	var textArea = document.createElement("textarea");
+	textArea.classList.add("txtLista");
+	var nuevoBoton = document.createElement("button");
+	var textoBoton = document.createTextNode("Añadir");
+	var iconoEliminar = document.createElement("a");
+	iconoEliminar.classList.add("fa", "fa-times", "eliminar");
+	iconoEliminar.addEventListener("click", eliminar);
+	nuevoBoton.classList.add("botonAdd");
+	nuevoBoton.appendChild(textoBoton);
+
+	form.appendChild(textArea);
+	form.appendChild(nuevoBoton);
+	form.appendChild(iconoEliminar);
+
+	this.parentElement.insertBefore(form, this.nextSibling);
+	nuevoBoton.addEventListener("click", nuevaTarjeta);
+}
+
+function nuevaTarjeta(e) {
+	e.preventDefault();
+	this.parentElement.style.display = "none";
+	this.parentElement.previousSibling.style.display = "block";
+	var txtTarjeta = document.createElement("textarea");
+	txtTarjeta.classList.add("txtTarjeta");
+
+	txtTarjeta.textContent = this.previousSibling.value;
+	this.parentElement.parentElement.insertBefore(txtTarjeta, this.parentElement.previousSibling);
+
+}
+
