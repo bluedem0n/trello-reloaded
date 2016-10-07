@@ -56,7 +56,7 @@ function nuevaLista(e) {
 
 	nuevaTarjeta.addEventListener("click", añadirTarjeta);
 	contenedorLista.addEventListener("drop", soltar);
-	contenedorLista.addEventListener("dragover", dragover);
+	contenedorLista.addEventListener("dragover", arrastarSobre);
 }
 
 function eliminar(e) {
@@ -102,6 +102,8 @@ function nuevaTarjeta(e) {
 	txtTarjeta.id = "id" + contador;
 	contador ++;
 	txtTarjeta.addEventListener("dragstart", empiezaArrastrar);
+	txtTarjeta.addEventListener("dragenter",entraArrastrar);
+	txtTarjeta.addEventListener("dragleave",dejaArrastrar);
 }
 
 function empiezaArrastrar(e) {
@@ -114,6 +116,13 @@ function soltar(e) {
 	this.insertBefore(elementoArrastrado, this.children[1]);
 }
 
-function dragover(e) {
+function entraArrastrar(e) {
+	this.parentElement.classList.add("color");
+	this.nextSibling.classList.add("colorEnlace");
+}
+function dejaArrastrar(e){
+	this.parentElement.classList.remove("color");
+}
+function arrastarSobre(e) {
 	e.preventDefault();
 }
