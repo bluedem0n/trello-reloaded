@@ -1,4 +1,5 @@
 window.addEventListener("load", cargar);
+var contador = 0;
 var contenedor = document.getElementById("contenedor");
 var span = document.getElementById("span");
 var boton = document.getElementById("boton");
@@ -40,5 +41,20 @@ function nuevaLista(e) {
 	spanLista.contentEditable = true;
 
 	contenedorLista.appendChild(spanLista);
+
+	contenedor.insertBefore(contenedorLista, span.previousSibling);
+
+	textoLista.value = "";
+
+	var nuevaTarjeta = document.createElement("a");
+	nuevaTarjeta.href = "#";
+
+	var textoAñadir = document.createTextNode("Añadir una tarea ...");
+
+	nuevaTarjeta.appendChild(textoAñadir);
+
+	contenedorLista.appendChild(nuevaTarjeta);
+
+	nuevaTarjeta.classList.add("enlaceTarjeta");
 
 }
