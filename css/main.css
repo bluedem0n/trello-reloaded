@@ -202,6 +202,7 @@ footer {
 }
 
 .txtTarjeta {
+	padding: 6px;
 	width: 100%;
 	height: 50px;
 	border: none;
