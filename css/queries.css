@@ -6,6 +6,9 @@
 /* Landscape phones and down */
 
 @media (max-width: 480px) {
+	.logo {
+		margin-right: 1em;
+	}
 	.buscar {
 		display: none;
 	}
@@ -20,7 +23,19 @@
 		margin-bottom: 2em;
 	}
 	#contenedorLista {
-		width: 78%;
+		width: 80%;
+		margin-bottom: 3em;
+	}
+	.contenedorLista {
+		width: 210px;
+		display: block;
+		margin-bottom: 2em;
+	}
+	#span {
+		width: 200px;
+	}
+	#textoLista {
+		width: 190px;
 	}
 }
 
