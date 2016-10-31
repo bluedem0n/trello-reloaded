@@ -28,7 +28,6 @@ function añadirLista(e) {
 function nuevaLista(e) {
 	e.preventDefault();
 	var contenedorLista = document.createElement("div");
-	contenedorLista.setAttribute("id","outer-dropzone");
 	var spanLista = document.createElement("span");
 
 	if (textoLista.value === "") {
@@ -123,8 +122,7 @@ function soltar(e) {
 	this.insertBefore(elementoArrastrado, this.children[1]);
 	this.classList.remove("color");
 	this.classList.remove("animated", "shake");
-
-
+	this.setAttribute("id","outer-dropzone");
 }
 
 function entraArrastrar(e) {
