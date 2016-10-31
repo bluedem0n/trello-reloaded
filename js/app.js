@@ -28,6 +28,7 @@ function añadirLista(e) {
 function nuevaLista(e) {
 	e.preventDefault();
 	var contenedorLista = document.createElement("div");
+	contenedorLista.setAttribute("id","outer-dropzone");
 	var spanLista = document.createElement("span");
 
 	if (textoLista.value === "") {
@@ -96,7 +97,7 @@ function nuevaTarjeta(e) {
 	this.parentElement.style.display = "none";
 	this.parentElement.previousSibling.style.display = "block";
 	var txtTarjeta = document.createElement("textarea");
-	txtTarjeta.classList.add("txtTarjeta");
+	txtTarjeta.classList.add("txtTarjeta" ,  "draggable");
 	txtTarjeta.setAttribute("id","yes-drop");
 	
 	txtTarjeta.textContent = this.previousSibling.value;
@@ -122,6 +123,8 @@ function soltar(e) {
 	this.insertBefore(elementoArrastrado, this.children[1]);
 	this.classList.remove("color");
 	this.classList.remove("animated", "shake");
+
+
 }
 
 function entraArrastrar(e) {
@@ -139,7 +142,5 @@ function arrastarSobre(e) {
 }
 
 function dragend(e) {
-	this.classList.add("dropzone");
 	this.classList.add("animated", "shake");
-	this.classList.add("dropzone");
 }
