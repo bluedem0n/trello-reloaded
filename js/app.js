@@ -3,7 +3,7 @@ var contador = 0;
 var contenedor = document.getElementById("contenedor");
 var span = document.getElementById("span");
 var boton = document.getElementById("boton");
-var textoLista = document.getElementById("textoLista");
+var textoLista = document.getElementById("textoLista");t 
 var contenedorLista = document.getElementById("contenedorLista");
 
 
