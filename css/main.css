@@ -244,3 +244,36 @@ footer {
 .color {
 	background-color: #7CC08F;
 }
+
+/* Drag and drop */
+
+
+
+.dropzone {
+  background-color: #ccc;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s;
+}
+
+.drag-drop {
+  display: inline-block;
+  width: 6.7%;
+  padding: 2em 0.5em;
+  margin: 0;
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
+}
