@@ -122,7 +122,8 @@ function soltar(e) {
 	this.insertBefore(elementoArrastrado, this.children[1]);
 	this.classList.remove("color");
 	this.classList.remove("animated", "shake");
-	this.setAttribute("id","outer-dropzone");
+	this.classList.add("dropzone");
+	
 }
 
 function entraArrastrar(e) {
@@ -141,4 +142,5 @@ function arrastarSobre(e) {
 
 function dragend(e) {
 	this.classList.add("animated", "shake");
+	this.classList.add("dropzone");
 }
